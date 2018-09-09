@@ -1,16 +1,19 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     font-size: 16px;
+    height: 100%;
 }
 
 a {
     color: inherit;
 }
 
-input, p {
+input,
+p {
     margin: 0;
     padding: 0;
 }
@@ -19,12 +22,15 @@ code {
     font-size: 1rem;
     color: #fff;
     background: rgba(0, 0, 0, 0.25);
-    padding: 0.5rem 1rem;
+    box-shadow: 0 0 4px #000 inset;
+    padding: 1rem 2rem;
+    margin-bottom: 4rem;
+    border-radius: 5px;
 }
 
 #preview {
     width: 100%;
-    height: 400px;
+    height: 100%;
     border-bottom: 1px solid #000;
     position: relative;
     display: flex;
@@ -45,15 +51,34 @@ code {
 }
 
 section#input_ranges {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
-footer {
-    background: #333;
+#input_ranges>table {
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 4px #000 inset;
     color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+footer {
+    color: #fff;
+    position: absolute;
+    bottom: 0.5rem;
 }
 
 footer a {
     color: inherit;
+}
+
+tr.row {
+    height: 32px;
+    line-height: 32px;
+}
+
+input[type="text"] {
+    width: 40px;
 }
