@@ -65,7 +65,7 @@ var g = new gradient({
         angle: "#input_angle"
     },
     callback: function(result) {
-        console.log(result);
+        //console.log(result);
     }
 });
 g.init();
