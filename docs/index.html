@@ -9,39 +9,71 @@
     <body>
         <section id="preview">
             <span id="title">gradient.js</span>
-            <span id="subtitle">Created by <a href="https://github.com/Bikossor/">Bikossor</a></span>
+            <span id="subtitle">Created by <a href="https://github.com/Bikossor/" target="_blank">Bikossor</a></span>
             <code id="preview_text"></code>
+            <section id="input_ranges">
+                <table>
+                    <tr class="row">
+                        <td>
+                            <label for="input_hue">Hue</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_hue" min="0" max="360"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_hue"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_hueDistance">Hue Distance</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_hueDistance" min="0" max="360" value="180"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_hueDistance"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_saturation">Saturation</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_saturation" min="0" max="100" value="50"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_saturation"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_lightness">Lightness</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_lightness" min="0" max="100" value="50"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_lightness"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_angle">Angle</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_angle" min="0" max="360" value="180"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_angle"/>
+                        </td>
+                    </tr>
+                </table>                
+            </section>
+            <footer>
+                <a href="https://github.com/Bikossor/gradient.js">gradient.js</a> - Version 0.2.0 by <a href="https://github.com/Bikossor/">Bikossor</a>
+            </footer>
         </section>
-        <section id="input_ranges">
-            <section>
-                <h1>Hue</h1>
-                <input type="range" id="input_hue" min="0" max="360"/>
-                <input type="text" id="label_hue"/>
-            </section>
-            <section>
-                <h1>Hue Distance</h1>
-                <input type="range" id="input_hueDistance" min="0" max="360" value="180"/>
-                <input type="text" id="label_hueDistance"/>
-            </section>
-            <section>
-                <h1>Saturation</h1>
-                <input type="range" id="input_saturation" min="0" max="100" value="50"/>
-                <input type="text" id="label_saturation"/>
-            </section>
-            <section>
-                <h1>Lightness</h1>
-                <input type="range" id="input_lightness" min="0" max="100" value="50"/>
-                <input type="text" id="label_lightness"/>
-            </section>
-            <section>
-                <h1>Angle</h1>
-                <input type="range" id="input_angle" min="0" max="360" value="180"/>
-                <input type="text" id="label_angle"/>
-            </section>
-        </section>
-        <footer>
-            <a href="https://github.com/Bikossor/gradient.js">gradient.js</a> - Version 0.1.0 by <a href="https://github.com/Bikossor/">Bikossor</a>
-        </footer>
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link rel="stylesheet" href="./assets/styles/stylesheet.css">
         <script src="./assets/js/gradient.min.js"></script>
