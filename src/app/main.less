@@ -1,0 +1,75 @@
+@import (reference) "_variables.less";
+@import "_elements.less";
+@import "_inputs.less";
+
+.flexColumn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+#preview {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #000;
+    position: relative;
+    .flexColumn();
+}
+
+#intro {
+    .flexColumn();
+
+    #title {
+        font-family: "Lobster";
+        font-size: 6rem;
+        color: #fff;
+        text-shadow: @shadow-normal;
+    }
+    
+    #subtitle {
+        font-size: 1.25rem;
+        color: #fff;
+        text-shadow: @shadow-normal;
+    }
+}
+
+#input_ranges {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: @shadow-high;
+    color: #000;
+    border-radius: 12px;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    table {
+        border-collapse: collapse;
+
+        td.centered {
+            text-align: center;
+        }
+    }
+}
+
+footer {
+    color: #fff;
+    position: absolute;
+    bottom: 0.5rem;
+}
+
+footer a {
+    color: inherit;
+}
+
+tr.row {
+    height: 32px;
+    line-height: 32px;
+}
+
+input[type="text"] {
+    width: 40px;
+}
+
+@import "_mediaQueries.less";
