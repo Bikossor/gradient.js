@@ -8,11 +8,17 @@
     </head>
     <body>
         <section id="preview">
-            <span id="title">gradient.js</span>
-            <span id="subtitle">Created by <a href="https://github.com/Bikossor/" target="_blank">Bikossor</a></span>
-            
+            <section id="intro">
+                <span id="title">gradient.js</span>
+                <span id="subtitle">Created by <a href="https://github.com/Bikossor/" target="_blank">Bikossor</a></span>
+            </section>
             <section id="input_ranges">
                 <table>
+                    <colgroup>
+                        <col style="width: 120px;"/>
+                        <col style="width: auto;"/>
+                        <col style="width: 120px;"/>
+                    </colgroup>
                     <tr class="row">
                         <td colspan="3">
                             <code id="preview_text"></code>
@@ -25,7 +31,7 @@
                         <td>
                             <input type="range" id="input_hue" min="0" max="360"/>
                         </td>
-                        <td>
+                        <td class="centered">
                             <input type="text" id="label_hue"/>
                         </td>
                     </tr>
@@ -36,7 +42,7 @@
                         <td>
                             <input type="range" id="input_hueDistance" min="0" max="360" value="180"/>
                         </td>
-                        <td>
+                        <td class="centered">
                             <input type="text" id="label_hueDistance"/>
                         </td>
                     </tr>
@@ -47,7 +53,7 @@
                         <td>
                             <input type="range" id="input_saturation" min="0" max="100" value="50"/>
                         </td>
-                        <td>
+                        <td class="centered">
                             <input type="text" id="label_saturation"/>
                         </td>
                     </tr>
@@ -58,7 +64,7 @@
                         <td>
                             <input type="range" id="input_lightness" min="0" max="100" value="50"/>
                         </td>
-                        <td>
+                        <td class="centered">
                             <input type="text" id="label_lightness"/>
                         </td>
                     </tr>
@@ -69,7 +75,7 @@
                         <td>
                             <input type="range" id="input_angle" min="0" max="360" value="180"/>
                         </td>
-                        <td>
+                        <td class="centered">
                             <input type="text" id="label_angle"/>
                         </td>
                     </tr>
@@ -80,8 +86,8 @@
             </footer>
         </section>
         <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="./assets/styles/stylesheet.css">
-        <script src="./assets/js/gradient.min.js"></script>
+        <link rel="stylesheet" href="./assets/styles/main.min.css">
+        <script src="../src/gradient.js"></script>
         <script src="./assets/js/app.js"></script>
     </body>
 </html>

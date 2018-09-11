@@ -34,7 +34,9 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "gulp-less": "^4.0.1",
     "gulp-uglify": "^3.0.1",
+    "less-plugin-clean-css": "^1.5.1",
     "pump": "^3.0.0"
   }
 }
