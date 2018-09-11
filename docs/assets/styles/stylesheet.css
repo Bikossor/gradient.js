@@ -20,12 +20,6 @@ p {
 
 code {
     font-size: 1rem;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 0 4px #000 inset;
-    padding: 1rem 2rem;
-    margin-bottom: 4rem;
-    border-radius: 5px;
 }
 
 #preview {
@@ -37,17 +31,20 @@ code {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #000;
 }
 
 #title {
     font-family: "Lobster";
     font-size: 6rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px #0009;
 }
 
 #subtitle {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     margin-bottom: 4rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px #0009;
 }
 
 section#input_ranges {
@@ -57,11 +54,13 @@ section#input_ranges {
 }
 
 #input_ranges>table {
-    background: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 0 4px #000 inset;
-    color: #fff;
+    background: #fff;
+    box-shadow: 4px 4px 12px #0006;
+    color: #000;
     padding: 2rem;
-    border-radius: 5px;
+    border-radius: 12px;
+    min-width: 700px;
+    overflow: hidden;
 }
 
 footer {
@@ -98,7 +97,7 @@ input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 4px;
     cursor: pointer;
-    background: #fff;
+    background: #333;
     border-radius: 1.3px;
     border: 0.2px solid #010101;
 }
@@ -109,7 +108,7 @@ input[type=range]::-webkit-slider-thumb {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: #ffffff;
+    background: #333;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -8px;
@@ -119,7 +118,7 @@ input[type=range]::-moz-range-track {
     width: 100%;
     height: 4px;
     cursor: pointer;
-    background: #fff;
+    background: #333;
 }
 
 input[type=range]::-moz-range-thumb {
