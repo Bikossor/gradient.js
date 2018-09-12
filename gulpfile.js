@@ -16,7 +16,7 @@ var folderDestinationDocs = "docs/assets/js/";
 
 gulp.task("build-less", function(callback) {
 	pump([
-		gulp.src(folderSource + "app/main.less"),
+		gulp.src("docs/assets/styles/main.less"),
 		less({
 			plugins: [
 				cleanCSSPlugin
