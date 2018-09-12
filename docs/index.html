@@ -87,7 +87,35 @@
         </section>
         <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="./assets/styles/main.min.css">
-        <script src="../src/gradient.js"></script>
-        <script src="./assets/js/app.js"></script>
+        <script src="./assets/js/gradient.min.js"></script>
+        <script>
+            new gradient({
+                inputs: {
+                    hue: "#input_hue",
+                    hueDistance: "#input_hueDistance",
+                    saturation: "#input_saturation",
+                    lightness: "#input_lightness",
+                    angle: "#input_angle"
+                },
+                callback: function(result) {
+                    var hue_1 = result.hue;
+                    var hue_2 = result.hue - result.hueDistance;
+                    var angle = `${result.angle}deg`;
+                    var saturation = `${result.saturation}%`;
+                    var lightness = `${result.lightness}%`;
+                    
+                    var random_gradient = `linear-gradient(${angle}, hsl(${hue_1}, ${saturation}, ${lightness}), hsl(${hue_2}, ${saturation}, ${lightness}))`;
+                    
+                    preview.style.background = random_gradient;
+                    preview_text.innerText = `${random_gradient};`;
+
+                    label_hue.value = result.hue;
+                    label_hueDistance.value = result.hueDistance;
+                    label_saturation.value = result.saturation;
+                    label_lightness.value = result.lightness;
+                    label_angle.value = result.angle;
+                }
+            }).init();
+        </script>
     </body>
 </html>
