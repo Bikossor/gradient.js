@@ -1,3 +1,5 @@
+@sliderThumbShadow: 2px 2px 4px #000;
+
 input[type=range] {
     -webkit-appearance: none;
     width: 100%;
@@ -17,12 +19,11 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-webkit-slider-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
+    box-shadow: @sliderThumbShadow;
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: #333;
+    background: #fff;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -8px;
@@ -36,8 +37,7 @@ input[type=range]::-moz-range-track {
 }
 
 input[type=range]::-moz-range-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
+    box-shadow: @sliderThumbShadow;
     height: 16px;
     width: 16px;
     border-radius: 50%;
@@ -66,8 +66,7 @@ input[type=range]::-ms-fill-upper {
 }
 
 input[type=range]::-ms-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
+    box-shadow: @sliderThumbShadow;
     height: 16px;
     width: 16px;
     border-radius: 50%;
