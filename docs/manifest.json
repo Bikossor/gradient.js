@@ -6,5 +6,5 @@
     "display": "fullscreen",
     "orientation": "portrait",
     "scope": "/",
-    "start_url": "/"
+    "start_url": "/gradient.js"
 }
