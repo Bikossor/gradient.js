@@ -86,6 +86,9 @@
                                 <td colspan="3">
                                     <button onclick="flipPanel();">Flip</button>
                                 </td>
+                                <td colspan="3">
+                                    <button onclick="copySnippet();">Copy snippet</button>
+                                </td>
                             </tr>
                         </table>
                     </section>
@@ -145,6 +148,13 @@
             var flipPanel = function() {
                 flipper.classList.toggle("flipped");
             };
+            var copySnippet = function(){
+                const x = document.createElement('textarea');
+                document.body.appendChild(x);
+                x.value = document.getElementById('preview_text').innerHTML;
+                x.select();document.execCommand('copy');
+                document.body.removeChild(x);
+            }
         </script>
     </body>
 </html>
