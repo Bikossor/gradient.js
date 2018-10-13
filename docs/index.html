@@ -94,6 +94,7 @@
                     </section>
                     <section class="back">
                         <button onclick="flipPanel();">Flip</button>
+                        <button onclick="randomize();">Randomize</button>
                     </section>
                 </section>
             </section>
@@ -104,7 +105,7 @@
         <link rel="stylesheet" href="./assets/styles/main.min.css">
         <script src="./assets/js/gradient.min.js"></script>
         <script>
-            new gradient({
+            var gradient = new gradient({
                 inputs: {
                     hue: "#input_hue",
                     hueDistance: "#input_hueDistance",
@@ -143,11 +144,30 @@
                     label_lightness.value = result.lightness;
                     label_angle.value = result.angle;
                 }
-            }).init();
+            });
 
+            gradient.init();
+            
+            function getRndInteger(min, max) {
+                return Math.floor(Math.random() * (max - min) ) + min;
+            } 
+            
+            var randomize = function() {
+                gradient.setValues({
+                    hue: getRndInteger(0, 180),
+                    hueDistance: getRndInteger(45, 90),
+                    saturation: getRndInteger(40, 80),
+                    lightness: getRndInteger(30, 75),
+                    angle: getRndInteger(0, 360)
+                });
+            };
+
+            randomize();
+            
             var flipPanel = function() {
                 flipper.classList.toggle("flipped");
             };
+
             var copySnippet = function(){
                 const x = document.createElement('textarea');
                 document.body.appendChild(x);

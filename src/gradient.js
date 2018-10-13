@@ -96,6 +96,11 @@ var gradient = (function() {
         }
         gradient.prototype.callback(result);
     };
+
+    gradient.prototype.setValues = function(newValues) {
+        result = newValues;
+        gradient.prototype.callback(result);
+    }
     
     return gradient;
 })();
