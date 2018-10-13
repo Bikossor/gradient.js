@@ -86,11 +86,15 @@
                                 <td colspan="3">
                                     <button onclick="flipPanel();">Flip</button>
                                 </td>
+                                <td colspan="3">
+                                    <button onclick="copySnippet();">Copy snippet</button>
+                                </td>
                             </tr>
                         </table>
                     </section>
                     <section class="back">
                         <button onclick="flipPanel();">Flip</button>
+                        <button onclick="randomize();">Randomize</button>
                     </section>
                 </section>
             </section>
@@ -100,51 +104,6 @@
         </section>
         <link rel="stylesheet" href="./assets/styles/main.min.css">
         <script src="./assets/js/gradient.min.js"></script>
-        <script>
-            new gradient({
-                inputs: {
-                    hue: "#input_hue",
-                    hueDistance: "#input_hueDistance",
-                    saturation: "#input_saturation",
-                    lightness: "#input_lightness",
-                    angle: "#input_angle"
-                },
-                callback: function(result) {
-                    var hue_1 = result.hue;
-                    var hue_2 = result.hue - result.hueDistance;
-                    var angle = `${result.angle}deg`;
-                    var saturation = `${result.saturation}%`;
-                    var lightness = `${result.lightness}%`;
-                    
-                    if(result.lightness < 30) {
-                        preview_text.style.color = "#fff";
-                        document.querySelectorAll("label").forEach(function(e) {
-                            e.style.color = "#fff";
-                        });
-                    }
-                    else {
-                        preview_text.style.color = "#000";
-                        document.querySelectorAll("label").forEach(function(e) {
-                            e.style.color = "#000";
-                        });
-                    }
-                    
-                    var random_gradient = `linear-gradient(${angle}, hsl(${hue_1}, ${saturation}, ${lightness}), hsl(${hue_2}, ${saturation}, ${lightness}))`;
-                    
-                    preview.style.background = random_gradient;
-                    preview_text.innerText = `${random_gradient};`;
-
-                    label_hue.value = result.hue;
-                    label_hueDistance.value = result.hueDistance;
-                    label_saturation.value = result.saturation;
-                    label_lightness.value = result.lightness;
-                    label_angle.value = result.angle;
-                }
-            }).init();
-
-            var flipPanel = function() {
-                flipper.classList.toggle("flipped");
-            };
-        </script>
+        <script src="./assets/js/app.js"></script>
     </body>
 </html>
