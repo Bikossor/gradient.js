@@ -68,3 +68,58 @@ var copySnippet = function () {
     document.execCommand('copy');
     document.body.removeChild(x);
 };
+
+function make_gradient(angle,h1,s1,l1,h2,s2,l2){
+    var canvas = document.createElement('canvas');
+    canvas.id     = "CursorLayer";
+    var W=1920, H=1080, L=2203;
+    
+    canvas.width  = W;
+    canvas.height = H;
+
+    var x=0, y=0,length=L;// angle=138;
+    var ctx = canvas.getContext('2d');
+    var grd = ctx.createLinearGradient(x,y,x + Math.cos(angle) * length, y - Math.sin(angle) * length);
+
+    grd.addColorStop(0,"hsl("+h1+", "+s1+"%, "+l1+"%)");
+    grd.addColorStop(1,"hsl("+h2+", "+s2+"%, "+l2+"%)");
+    
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, W, H);
+    
+   return canvas;
+}
+
+function make_image(angle,h1,s1,l1,h2,s2,l2){
+	canvas = make_gradient(angle,h1,s1,l1,h2,s2,l2);
+  var dataURL = canvas.toDataURL( "image/png" );
+  var data = atob( dataURL.substring( "data:image/png;base64,".length ) ),
+      asArray = new Uint8Array(data.length);
+  for( var i = 0, len = data.length; i < len; ++i ) {
+      asArray[i] = data.charCodeAt(i);    
+  }
+  var blob = new Blob( [ asArray.buffer ], {type: "image/png"} );
+  url  = (window.webkitURL || window.URL).createObjectURL( blob );
+
+	a = document.createElement('a');
+  document.body.appendChild(a);
+  a.download = "gradient";
+  a.href = url;
+  a.click();
+  setTimeout(function(){
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+      }, 100);  
+}
+
+function download_gradient(){
+    angle = 0;
+    h1=0;
+    h2=0;
+    l1=0;
+    l2=0;
+    s1=0;
+    s2=0;
+ make_image(angle,h1,s1,l1,h2,s2,l2);
+}
+
