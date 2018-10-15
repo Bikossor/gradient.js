@@ -113,13 +113,13 @@ function make_image(angle,h1,s1,l1,h2,s2,l2){
 }
 
 function download_gradient(){
-    angle = 0;
-    h1=0;
-    h2=0;
-    l1=0;
-    l2=0;
-    s1=0;
-    s2=0;
- make_image(angle,h1,s1,l1,h2,s2,l2);
+    angle = document.getElementById('input_angle').value;
+    h1 = document.getElementById('input_hue').value;
+    h2 = (document.getElementById('input_hue').value+document.getElementById('input_hueDistance').value)%360;
+    l1 = document.getElementById('input_lightness').value;
+    l2 = document.getElementById('input_lightness').value;
+    s1 = document.getElementById('input_saturation').value;
+    s2 = document.getElementById('input_saturation').value;
+    make_image(angle,h1,s1,l1,h2,s2,l2);
 }
 
