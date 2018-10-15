@@ -111,7 +111,7 @@ function make_image(angle,h1,s1,l1,h2,s2,l2){
 
 	a = document.createElement('a');
   document.body.appendChild(a);
-  a.download = "gradient";
+  a.download = "gradient_" + Date.now();
   a.href = url;
   a.click();
   setTimeout(function(){
