@@ -71,21 +71,29 @@ var copySnippet = function () {
 
 function make_gradient(angle,h1,s1,l1,h2,s2,l2){
     var canvas = document.createElement('canvas');
-    canvas.id     = "CursorLayer";
-    var W=1920, H=1080, L=2203;
-    
-    canvas.width  = W;
-    canvas.height = H;
+    canvas.id     = "GradientTemp";
 
-    var x=0, y=0,length=L;// angle=138;
+    var WIDTH=1920, HEIGHT=1080;
+    w = WIDTH/2;
+    h = HEIGHT/2;
+
+    x = w + Math.cos(angle) * w;
+    y =	h - Math.sin(angle) * h;
+    X = w - Math.cos(angle) * w;
+    Y = h + Math.sin(angle) * h;
+    
+    canvas.width  = WIDTH;
+    canvas.height = HEIGHT;
+
+    //var x=0, y=0,length=L;// angle=138;
     var ctx = canvas.getContext('2d');
-    var grd = ctx.createLinearGradient(x,y,x + Math.cos(angle) * length, y - Math.sin(angle) * length);
+    var grd = ctx.createLinearGradient(x,y,X,Y);//x + Math.cos(angle) * length, y - Math.sin(angle) * length);
 
     grd.addColorStop(0,"hsl("+h1+", "+s1+"%, "+l1+"%)");
     grd.addColorStop(1,"hsl("+h2+", "+s2+"%, "+l2+"%)");
     
     ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
     
    return canvas;
 }
@@ -109,17 +117,19 @@ function make_image(angle,h1,s1,l1,h2,s2,l2){
   setTimeout(function(){
           document.body.removeChild(a);
           window.URL.revokeObjectURL(url);  
+	 canvas.remove();	
       }, 100);  
 }
 
 function download_gradient(){
-    angle = document.getElementById('input_angle').value;
-    h1 = document.getElementById('input_hue').value;
-    h2 = (document.getElementById('input_hue').value+document.getElementById('input_hueDistance').value)%360;
-    l1 = document.getElementById('input_lightness').value;
-    l2 = document.getElementById('input_lightness').value;
-    s1 = document.getElementById('input_saturation').value;
-    s2 = document.getElementById('input_saturation').value;
+    angle = document.getElementById('label_angle').value;
+    h1 = document.getElementById('label_hue').value;
+    h2 = (document.getElementById('label_hue').value-document.getElementById('label_hueDistance').value);
+    l1 = document.getElementById('label_lightness').value;
+    l2 = document.getElementById('label_lightness').value;
+    s1 = document.getElementById('label_saturation').value;
+    s2 = document.getElementById('label_saturation').value;
+
     make_image(angle,h1,s1,l1,h2,s2,l2);
 }
 
