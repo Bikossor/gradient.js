@@ -35,6 +35,12 @@ var gradient = new gradient({
         label_saturation.value = result.saturation;
         label_lightness.value = result.lightness;
         label_angle.value = result.angle;
+        
+        input_hue.value = result.hue;
+        input_hueDistance.value = result.hueDistance;
+        input_saturation.value = result.saturation;
+        input_lightness.value = result.lightness;
+        input_angle.value = result.angle;
     }
 });
 
