@@ -28,13 +28,13 @@ var gradient = new gradient({
         var random_gradient = `linear-gradient(${angle}, hsl(${hue_1}, ${saturation}, ${lightness}), hsl(${hue_2}, ${saturation}, ${lightness}))`;
 
         preview.style.background = random_gradient;
-        preview_text.innerText = `background: ${random_gradient};`;
+        preview_text.value = `background: ${random_gradient};`;
 
-        label_hue.value = result.hue;
-        label_hueDistance.value = result.hueDistance;
-        label_saturation.value = result.saturation;
-        label_lightness.value = result.lightness;
-        label_angle.value = result.angle;
+        input_hue.value = label_hue.value = result.hue;
+        input_hueDistance.value = label_hueDistance.value = result.hueDistance;
+        input_saturation.value = label_saturation.value = result.saturation;
+        input_lightness.value = label_lightness.value = result.lightness;
+        input_angle.value = label_angle.value = result.angle;
     }
 });
 
@@ -45,24 +45,12 @@ function getRndInteger(min, max) {
 };
 
 var randomize = function () {
-    var element_hue = document.getElementById('input_hue');
-    var element_hueDistance = document.getElementById('input_hueDistance');
-    var element_saturation = document.getElementById('input_saturation');
-    var element_lightness = document.getElementById('input_lightness');
-    var element_angle = document.getElementById('input_angle');
-
-    var random_hue = element_hue.value = getRndInteger(0, 180);
-    var random_hueDistance = element_hueDistance.value = getRndInteger(45, 90);
-    var random_saturation = element_saturation.value = getRndInteger(40, 80);
-    var random_lightness = element_lightness.value = getRndInteger(30, 75);
-    var random_angle = element_angle.value = getRndInteger(0, 360);
-
     gradient.setValues({
-        hue: random_hue,
-        hueDistance: random_hueDistance,
-        saturation: random_saturation,
-        lightness: random_lightness,
-        angle: random_angle
+        hue: getRndInteger(0, 180),
+        hueDistance: getRndInteger(45, 90),
+        saturation: getRndInteger(40, 80),
+        lightness: getRndInteger(30, 75),
+        angle: getRndInteger(0, 360)
     });
 };
 
@@ -75,7 +63,7 @@ var flipPanel = function () {
 var copySnippet = function () {
     const x = document.createElement('textarea');
     document.body.appendChild(x);
-    x.value = "background:" + document.getElementById('preview_text').innerHTML;
+    x.value = document.getElementById('preview_text').value;
     x.select();
     document.execCommand('copy');
     document.body.removeChild(x);
