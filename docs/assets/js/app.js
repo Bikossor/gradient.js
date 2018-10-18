@@ -28,13 +28,19 @@ var gradient = new gradient({
         var random_gradient = `linear-gradient(${angle}, hsl(${hue_1}, ${saturation}, ${lightness}), hsl(${hue_2}, ${saturation}, ${lightness}))`;
 
         preview.style.background = random_gradient;
-        preview_text.innerText = `${random_gradient};`;
+        preview_text.value = `background: ${random_gradient};`;
 
         label_hue.value = result.hue;
         label_hueDistance.value = result.hueDistance;
         label_saturation.value = result.saturation;
         label_lightness.value = result.lightness;
         label_angle.value = result.angle;
+        
+        input_hue.value = result.hue;
+        input_hueDistance.value = result.hueDistance;
+        input_saturation.value = result.saturation;
+        input_lightness.value = result.lightness;
+        input_angle.value = result.angle;
     }
 });
 
@@ -63,7 +69,7 @@ var flipPanel = function () {
 var copySnippet = function () {
     const x = document.createElement('textarea');
     document.body.appendChild(x);
-    x.value = document.getElementById('preview_text').innerHTML;
+    x.value = document.getElementById('preview_text').value;
     x.select();
     document.execCommand('copy');
     document.body.removeChild(x);
