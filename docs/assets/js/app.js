@@ -63,7 +63,7 @@ var flipPanel = function () {
 var copySnippet = function () {
     const x = document.createElement('textarea');
     document.body.appendChild(x);
-    x.value = "background:" + document.getElementById('preview_text').innerHTML;
+    x.value = document.getElementById('preview_text').value;
     x.select();
     document.execCommand('copy');
     document.body.removeChild(x);
