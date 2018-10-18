@@ -45,12 +45,24 @@ function getRndInteger(min, max) {
 };
 
 var randomize = function () {
+    var element_hue = document.getElementById('input_hue');
+    var element_hueDistance = document.getElementById('input_hueDistance');
+    var element_saturation = document.getElementById('input_saturation');
+    var element_lightness = document.getElementById('input_lightness');
+    var element_angle = document.getElementById('input_angle');
+
+    var random_hue = element_hue.value = getRndInteger(0, 180);
+    var random_hueDistance = element_hueDistance.value = getRndInteger(45, 90);
+    var random_saturation = element_saturation.value = getRndInteger(40, 80);
+    var random_lightness = element_lightness.value = getRndInteger(30, 75);
+    var random_angle = element_angle.value = getRndInteger(0, 360);
+
     gradient.setValues({
-        hue: getRndInteger(0, 180),
-        hueDistance: getRndInteger(45, 90),
-        saturation: getRndInteger(40, 80),
-        lightness: getRndInteger(30, 75),
-        angle: getRndInteger(0, 360)
+        hue: random_hue,
+        hueDistance: random_hueDistance,
+        saturation: random_saturation,
+        lightness: random_lightness,
+        angle: random_angle
     });
 };
 
@@ -81,7 +93,7 @@ function make_gradient(angle,h1,s1,l1,h2,s2,l2){
     y =	h - Math.sin(angle) * h;
     X = w - Math.cos(angle) * w;
     Y = h + Math.sin(angle) * h;
-    
+
     canvas.width  = WIDTH;
     canvas.height = HEIGHT;
 
@@ -91,10 +103,10 @@ function make_gradient(angle,h1,s1,l1,h2,s2,l2){
 
     grd.addColorStop(0,"hsl("+h1+", "+s1+"%, "+l1+"%)");
     grd.addColorStop(1,"hsl("+h2+", "+s2+"%, "+l2+"%)");
-    
+
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
-    
+
    return canvas;
 }
 
@@ -104,7 +116,7 @@ function make_image(angle,h1,s1,l1,h2,s2,l2){
   var data = atob( dataURL.substring( "data:image/png;base64,".length ) ),
       asArray = new Uint8Array(data.length);
   for( var i = 0, len = data.length; i < len; ++i ) {
-      asArray[i] = data.charCodeAt(i);    
+      asArray[i] = data.charCodeAt(i);
   }
   var blob = new Blob( [ asArray.buffer ], {type: "image/png"} );
   url  = (window.webkitURL || window.URL).createObjectURL( blob );
@@ -116,9 +128,9 @@ function make_image(angle,h1,s1,l1,h2,s2,l2){
   a.click();
   setTimeout(function(){
           document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);  
-	 canvas.remove();	
-      }, 100);  
+          window.URL.revokeObjectURL(url);
+	 canvas.remove();
+      }, 100);
 }
 
 function download_gradient(){
@@ -132,4 +144,3 @@ function download_gradient(){
 
     make_image(angle,h1,s1,l1,h2,s2,l2);
 }
-
