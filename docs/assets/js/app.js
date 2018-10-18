@@ -28,7 +28,7 @@ var gradient = new gradient({
         var random_gradient = `linear-gradient(${angle}, hsl(${hue_1}, ${saturation}, ${lightness}), hsl(${hue_2}, ${saturation}, ${lightness}))`;
 
         preview.style.background = random_gradient;
-        preview_text.innerText = `${random_gradient};`;
+        preview_text.innerText = `background: ${random_gradient};`;
 
         label_hue.value = result.hue;
         label_hueDistance.value = result.hueDistance;
