@@ -30,7 +30,10 @@
                             </colgroup>
                             <tr class="row">
                                 <td colspan="3">
-                                    <code id="preview_text"></code>
+                                    <div class="preview_container">
+                                        <input type="text" id="preview_text"/>
+                                        <button onclick="copySnippet();">Copy snippet</button>
+                                    </div>                                    
                                 </td>
                             </tr>
                             <tr class="row">
@@ -91,9 +94,6 @@
                             <tr>
                                 <td>
                                     <button onclick="flipPanel();">Flip</button>
-                                </td>
-                                <td>
-                                    <button onclick="copySnippet();">Copy snippet</button>
                                 </td>
                             </tr>
                         </table>
