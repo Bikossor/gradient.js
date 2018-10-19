@@ -35,10 +35,6 @@
 table {
     border-collapse: collapse;
     width: 100%;
-
-    td.centered {
-        text-align: center;
-    }
 }
 
 footer {
@@ -57,20 +53,29 @@ tr.row {
 }
 
 input[type="text"] {
-    width: 40px;    
+    width: 60px;    
     background: transparent;
-    border: 2px solid white;
-    color: white;
-    padding: 4px;
-    border-radius: 8px;
-    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: text;
 }
+
 button {
     background: transparent;
-    border: 2px solid white;
-    color: white;
-    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 5px 10px;
     border-radius: 8px;
     cursor: pointer;
 }
+
+.preview_container {
+    display: flex;
+    
+    #preview_text {
+        flex: 1;
+        font-family: "PT Mono";
+    }
+}
+
 @import "_mediaQueries.less";

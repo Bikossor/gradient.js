@@ -30,7 +30,10 @@
                             </colgroup>
                             <tr class="row">
                                 <td colspan="3">
-                                    <code id="preview_text"></code>
+                                    <div class="preview_container">
+                                        <input type="text" id="preview_text"/>
+                                        <button onclick="copySnippet();">Copy snippet</button>
+                                    </div>                                    
                                 </td>
                             </tr>
                             <tr class="row">
@@ -40,7 +43,7 @@
                                 <td>
                                     <input type="range" id="input_hue" min="0" max="360"/>
                                 </td>
-                                <td class="centered">
+                                <td>
                                     <input type="text" id="label_hue"/>
                                 </td>
                             </tr>
@@ -51,7 +54,7 @@
                                 <td>
                                     <input type="range" id="input_hueDistance" min="0" max="360" value="180"/>
                                 </td>
-                                <td class="centered">
+                                <td>
                                     <input type="text" id="label_hueDistance"/>
                                 </td>
                             </tr>
@@ -62,7 +65,7 @@
                                 <td>
                                     <input type="range" id="input_saturation" min="0" max="100" value="50"/>
                                 </td>
-                                <td class="centered">
+                                <td>
                                     <input type="text" id="label_saturation"/>
                                 </td>
                             </tr>
@@ -73,7 +76,7 @@
                                 <td>
                                     <input type="range" id="input_lightness" min="0" max="100" value="50"/>
                                 </td>
-                                <td class="centered">
+                                <td>
                                     <input type="text" id="label_lightness"/>
                                 </td>
                             </tr>
@@ -84,16 +87,13 @@
                                 <td>
                                     <input type="range" id="input_angle" min="0" max="360" value="180"/>
                                 </td>
-                                <td class="centered">
+                                <td>
                                     <input type="text" id="label_angle"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <button onclick="flipPanel();">Flip</button>
-                                </td>
-                                <td>
-                                    <button onclick="copySnippet();">Copy snippet</button>
                                 </td>
                             </tr>
                         </table>
@@ -106,7 +106,7 @@
                 </section>
             </section>
             <footer>
-                <a href="https://github.com/Bikossor/gradient.js">gradient.js</a> - Version 0.2.0 by <a href="https://github.com/Bikossor/">Bikossor</a>
+                <a href="https://github.com/Bikossor/gradient.js">gradient.js</a> - Version 1.0.0 by <a href="https://github.com/Bikossor/">Bikossor</a>
             </footer>
         </section>
         <link rel="stylesheet" href="./assets/styles/main.min.css">
