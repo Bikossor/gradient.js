@@ -1,43 +1,68 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var pump = require('pump');
-var lessPluginCleanCSS = require('less-plugin-clean-css');
-
-var cleanCSSPlugin = new lessPluginCleanCSS({
+const gulp = require('gulp');
+const less = require('gulp-less');
+const uglify = require('gulp-uglify-es').default;
+const concat = require('gulp-concat');
+const pump = require('pump');
+const lessPluginCleanCSS = require('less-plugin-clean-css');
+const cleanCSSPlugin = new lessPluginCleanCSS({
 	advanced: true
 });
 
-var fileName = "gradient";
-var folderSource = "src/";
-var folderDestination = "dist/";
-var folderDestinationDocs = "docs/assets/js/";
+const src = {
+	styles: 'src/styles/',
+	scripts: 'src/js/'
+};
 
-gulp.task("build-less", function(callback) {
+const dist = {
+	styles: 'docs/assets/styles/',
+	scripts: 'docs/assets/js/',
+	lib: 'dist/'
+};
+
+const filename = {
+	styles: 'styles.min.css',
+	scripts: 'scripts.min.js',
+	lib: 'gradient.min.js'
+};
+
+gulp.task('build-less', function (callback) {
 	pump([
-		gulp.src("docs/assets/styles/main.less"),
+		gulp.src(`${src.styles}main.less`),
 		less({
 			plugins: [
 				cleanCSSPlugin
 			]
 		}),
-		concat("main.min.css"),
-		gulp.dest("docs/assets/styles/")
+		concat(filename.styles),
+		gulp.dest(dist.styles)
 	], callback);
 });
 
-gulp.task("build-js", function (callback) {
+gulp.task('build-js-gh-page', function (callback) {
 	pump([
-		gulp.src(folderSource + "*.js"),
+		gulp.src([
+			`${src.scripts}gradient.js`,
+			`${src.scripts}app.js`
+		]),
 		uglify(),
-		concat(fileName + ".min.js"),
-        gulp.dest(folderDestination),
-        gulp.dest(folderDestinationDocs)
+		concat(filename.scripts, {
+			newLine: ';'
+		}),
+		gulp.dest(dist.scripts)
 	], callback);
 });
 
-gulp.task("default", [
-	"build-less",
-	"build-js"
+gulp.task('build-js-gradient-lib', function (callback) {
+	pump([
+		gulp.src(`${src.scripts}gradient.js`),
+		uglify(),
+		concat(filename.lib),
+		gulp.dest(dist.lib),
+	], callback);
+});
+
+gulp.task('default', [
+	'build-less',
+	'build-js-gh-page',
+	'build-js-gradient-lib'
 ]);
