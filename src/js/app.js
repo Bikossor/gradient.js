@@ -30,17 +30,11 @@ var gradient = new gradient({
         preview.style.background = random_gradient;
         preview_text.value = `background: ${random_gradient};`;
 
-        label_hue.value = result.hue;
-        label_hueDistance.value = result.hueDistance;
-        label_saturation.value = result.saturation;
-        label_lightness.value = result.lightness;
-        label_angle.value = result.angle;
-        
-        input_hue.value = result.hue;
-        input_hueDistance.value = result.hueDistance;
-        input_saturation.value = result.saturation;
-        input_lightness.value = result.lightness;
-        input_angle.value = result.angle;
+        input_hue.value = label_hue.value = result.hue;
+        input_hueDistance.value = label_hueDistance.value = result.hueDistance;
+        input_saturation.value = label_saturation.value = result.saturation;
+        input_lightness.value = label_lightness.value = result.lightness;
+        input_angle.value = label_angle.value = result.angle;
     }
 });
 
@@ -87,7 +81,7 @@ function make_gradient(angle,h1,s1,l1,h2,s2,l2){
     y =	h - Math.sin(angle) * h;
     X = w - Math.cos(angle) * w;
     Y = h + Math.sin(angle) * h;
-    
+
     canvas.width  = WIDTH;
     canvas.height = HEIGHT;
 
@@ -97,10 +91,10 @@ function make_gradient(angle,h1,s1,l1,h2,s2,l2){
 
     grd.addColorStop(0,"hsl("+h1+", "+s1+"%, "+l1+"%)");
     grd.addColorStop(1,"hsl("+h2+", "+s2+"%, "+l2+"%)");
-    
+
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
-    
+
    return canvas;
 }
 
@@ -110,7 +104,7 @@ function make_image(angle,h1,s1,l1,h2,s2,l2){
   var data = atob( dataURL.substring( "data:image/png;base64,".length ) ),
       asArray = new Uint8Array(data.length);
   for( var i = 0, len = data.length; i < len; ++i ) {
-      asArray[i] = data.charCodeAt(i);    
+      asArray[i] = data.charCodeAt(i);
   }
   var blob = new Blob( [ asArray.buffer ], {type: "image/png"} );
   url  = (window.webkitURL || window.URL).createObjectURL( blob );
@@ -122,9 +116,9 @@ function make_image(angle,h1,s1,l1,h2,s2,l2){
   a.click();
   setTimeout(function(){
           document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);  
-	 canvas.remove();	
-      }, 100);  
+          window.URL.revokeObjectURL(url);
+	 canvas.remove();
+      }, 100);
 }
 
 function download_gradient(){
@@ -138,4 +132,3 @@ function download_gradient(){
 
     make_image(angle,h1,s1,l1,h2,s2,l2);
 }
-
