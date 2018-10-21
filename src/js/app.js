@@ -55,12 +55,8 @@ var flipPanel = function () {
 };
 
 var copySnippet = function () {
-    const x = document.createElement('textarea');
-    document.body.appendChild(x);
-    x.value = document.getElementById('preview_text').value;
-    x.select();
+    preview_text.select();
     document.execCommand('copy');
-    document.body.removeChild(x);
 };
 
 function make_gradient(angle,h1,s1,l1,h2,s2,l2){
