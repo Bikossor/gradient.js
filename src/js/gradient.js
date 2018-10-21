@@ -73,25 +73,11 @@ var gradient = (function() {
         for (var i in _options.inputs) {
             var inputElement = document.querySelector(_options.inputs[i]);
             
-            switch(i) {
-                case "hue":
-                    result.hue = inputElement.value;
-                    break;
-                case "hueDistance":
-                    result.hueDistance = inputElement.value;
-                    break;
-                case "saturation":
-                    result.saturation = inputElement.value;
-                    break;
-                case "lightness":
-                    result.lightness = inputElement.value;
-                    break;
-                case "angle":
-                    result.angle = inputElement.value;
-                    break;
-                default:
-                    throw new Error("Type not found!");
-                    break;
+            if (result.i !== null) {
+                result.i = inputElement.value;
+            }
+            else {
+                throw new Error("Type not found!");
             }
         }
         gradient.prototype.callback(result);
