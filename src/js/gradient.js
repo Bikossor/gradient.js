@@ -101,6 +101,10 @@ var gradient = (function() {
         result = newValues;
         gradient.prototype.callback(result);
     }
+
+    gradient.prototype.getString = function() {
+        return `linear-gradient(${result.angle}deg, hsl(${result.hue}, ${result.saturation}%, ${result.lightness}%), hsl(${result.hue - result.hueDistance}, ${result.saturation}%, ${result.lightness}%))`;
+    };
     
     return gradient;
 })();

@@ -7,11 +7,7 @@ var gradient = new gradient({
         angle: "#input_angle"
     },
     callback: function (result) {
-        var hue_1 = result.hue;
-        var hue_2 = result.hue - result.hueDistance;
-        var angle = `${result.angle}deg`;
-        var saturation = `${result.saturation}%`;
-        var lightness = `${result.lightness}%`;
+        var gradientString = gradient.getString();
 
         if (result.lightness < 30) {
             preview_text.style.color = "#fff";
@@ -24,11 +20,9 @@ var gradient = new gradient({
                 e.style.color = "#000";
             });
         }
-
-        var random_gradient = `linear-gradient(${angle}, hsl(${hue_1}, ${saturation}, ${lightness}), hsl(${hue_2}, ${saturation}, ${lightness}))`;
-
-        preview.style.background = random_gradient;
-        preview_text.value = `background: ${random_gradient};`;
+        
+        preview.style.background = gradientString;
+        preview_text.value = `background: ${gradientString};`;
 
         input_hue.value = label_hue.value = result.hue;
         input_hueDistance.value = label_hueDistance.value = result.hueDistance;
