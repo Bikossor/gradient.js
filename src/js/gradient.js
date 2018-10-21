@@ -7,7 +7,6 @@ var gradient = (function() {
         angle: 0
     };
 
-    var eventType = "input";
     var _options = {};
 
     function gradient(options) {
@@ -42,29 +41,23 @@ var gradient = (function() {
         gradient.prototype.callback(result);
     };
     
+    var eventCallbacks = {
+        hue: inputHueChanged,
+        hueDistance: inputHueDistanceChanged,
+        saturation: inputSaturationChanged,
+        lightness: inputLightnessChanged,
+        angle: inputAngleChanged
+    };
+    
     function registerEvents(inputElements) {
         for (var i in inputElements) {
             var inputElement = document.querySelector(inputElements[i]);
             
-            switch(i) {
-                case "hue":
-                    inputElement.addEventListener(eventType, inputHueChanged, false);
-                    break;
-                case "hueDistance":
-                    inputElement.addEventListener(eventType, inputHueDistanceChanged, false);
-                    break;
-                case "saturation":
-                    inputElement.addEventListener(eventType, inputSaturationChanged, false);
-                    break;
-                case "lightness":
-                    inputElement.addEventListener(eventType, inputLightnessChanged, false);
-                    break;
-                case "angle":
-                    inputElement.addEventListener(eventType, inputAngleChanged, false);
-                    break;
-                default:
-                    throw new Error("Type not found!");
-                    break;
+            if (eventCallbacks.i !== null) {
+                inputElement.addEventListener("input", eventCallbacks[i], false);
+            }
+            else {
+                throw new Error("Type not found!");
             }
         }
     };
