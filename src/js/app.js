@@ -7,11 +7,7 @@ var gradient = new gradient({
         angle: "#input_angle"
     },
     callback: function (result) {
-        var hue_1 = result.hue;
-        var hue_2 = result.hue - result.hueDistance;
-        var angle = `${result.angle}deg`;
-        var saturation = `${result.saturation}%`;
-        var lightness = `${result.lightness}%`;
+        var gradientString = gradient.getString();
 
         if (result.lightness < 30) {
             preview_text.style.color = "#fff";
@@ -25,10 +21,8 @@ var gradient = new gradient({
             });
         }
 
-        var random_gradient = `linear-gradient(${angle}, hsl(${hue_1}, ${saturation}, ${lightness}), hsl(${hue_2}, ${saturation}, ${lightness}))`;
-
-        preview.style.background = random_gradient;
-        preview_text.value = `background: ${random_gradient};`;
+        preview.style.background = gradientString;
+        preview_text.value = `background: ${gradientString};`;
 
         input_hue.value = label_hue.value = result.hue;
         input_hueDistance.value = label_hueDistance.value = result.hueDistance;
@@ -61,74 +55,71 @@ var flipPanel = function () {
 };
 
 var copySnippet = function () {
-    const x = document.createElement('textarea');
-    document.body.appendChild(x);
-    x.value = document.getElementById('preview_text').value;
-    x.select();
+    preview_text.select();
     document.execCommand('copy');
-    document.body.removeChild(x);
 };
 
-function make_gradient(angle,h1,s1,l1,h2,s2,l2){
+function make_gradient(angle, h1, s1, l1, h2, s2, l2) {
     var canvas = document.createElement('canvas');
-    canvas.id     = "GradientTemp";
+    canvas.id = "GradientTemp";
 
-    var WIDTH=1920, HEIGHT=1080;
-    w = WIDTH/2;
-    h = HEIGHT/2;
+    var WIDTH = 1920,
+        HEIGHT = 1080,
+        HALF_WIDTH = WIDTH / 2,
+        HALF_HEIGHT = HEIGHT / 2,
+        x1 = HALF_WIDTH + Math.cos(angle) * HALF_WIDTH,
+        y1 = HALF_HEIGHT - Math.sin(angle) * HALF_HEIGHT,
+        x2 = HALF_WIDTH - Math.cos(angle) * HALF_WIDTH,
+        y2 = HALF_HEIGHT + Math.sin(angle) * HALF_HEIGHT;
 
-    x = w + Math.cos(angle) * w;
-    y =	h - Math.sin(angle) * h;
-    X = w - Math.cos(angle) * w;
-    Y = h + Math.sin(angle) * h;
-
-    canvas.width  = WIDTH;
+    canvas.width = WIDTH;
     canvas.height = HEIGHT;
 
-    //var x=0, y=0,length=L;// angle=138;
+    //var x1=0, y1=0,length=L;// angle=138;
     var ctx = canvas.getContext('2d');
-    var grd = ctx.createLinearGradient(x,y,X,Y);//x + Math.cos(angle) * length, y - Math.sin(angle) * length);
+    var grd = ctx.createLinearGradient(x1, y1, x2, y2); //x1 + Math.cos(angle) * length, y1 - Math.sin(angle) * length);
 
-    grd.addColorStop(0,"hsl("+h1+", "+s1+"%, "+l1+"%)");
-    grd.addColorStop(1,"hsl("+h2+", "+s2+"%, "+l2+"%)");
+    grd.addColorStop(0, "hsl(" + h1 + ", " + s1 + "%, " + l1 + "%)");
+    grd.addColorStop(1, "hsl(" + h2 + ", " + s2 + "%, " + l2 + "%)");
 
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-   return canvas;
-}
+    return canvas;
+};
 
-function make_image(angle,h1,s1,l1,h2,s2,l2){
-	canvas = make_gradient(angle,h1,s1,l1,h2,s2,l2);
-  var dataURL = canvas.toDataURL( "image/png" );
-  var data = atob( dataURL.substring( "data:image/png;base64,".length ) ),
-      asArray = new Uint8Array(data.length);
-  for( var i = 0, len = data.length; i < len; ++i ) {
-      asArray[i] = data.charCodeAt(i);
-  }
-  var blob = new Blob( [ asArray.buffer ], {type: "image/png"} );
-  url  = (window.webkitURL || window.URL).createObjectURL( blob );
+function make_image(angle, h1, s1, l1, h2, s2, l2) {
+    var canvas = make_gradient(angle, h1, s1, l1, h2, s2, l2),
+        dataURL = canvas.toDataURL("image/png"),
+        data = atob(dataURL.substring("data:image/png;base64,".length)),
+        asArray = new Uint8Array(data.length),
+        url = window.webkitURL || window.URL;
 
-	a = document.createElement('a');
-  document.body.appendChild(a);
-  a.download = "gradient_" + Date.now();
-  a.href = url;
-  a.click();
-  setTimeout(function(){
-          document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);
-	 canvas.remove();
-      }, 100);
-}
+    for (var i = 0, len = data.length; i < len; ++i) {
+        asArray[i] = data.charCodeAt(i);
+    }
 
-function download_gradient(){
-    angle = document.getElementById('label_angle').value;
-    h1 = document.getElementById('label_hue').value;
-    h2 = (document.getElementById('label_hue').value-document.getElementById('label_hueDistance').value);
-    l1 = document.getElementById('label_lightness').value;
-    l2 = document.getElementById('label_lightness').value;
-    s1 = document.getElementById('label_saturation').value;
-    s2 = document.getElementById('label_saturation').value;
+    var blob = new Blob([asArray.buffer], {
+        type: "image/png"
+    });
 
-    make_image(angle,h1,s1,l1,h2,s2,l2);
-}
+    var objectURL = url.createObjectURL(blob),
+        a = document.createElement('a');
+
+    document.body.appendChild(a);
+    a.download = "gradient_" + Date.now();
+    a.href = objectURL;
+    a.click();
+    setTimeout(function () {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(objectURL);
+        canvas.remove();
+    }, 100);
+};
+
+function download_gradient() {
+    var lightness = label_lightness.value,
+        saturation = label_saturation.value;
+
+    make_image(label_angle.value, label_hue.value, saturation, lightness, label_hue.value - label_hueDistance.value, saturation, lightness);
+};

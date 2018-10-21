@@ -7,7 +7,6 @@ var gradient = (function() {
         angle: 0
     };
 
-    var eventType = "input";
     var _options = {};
 
     function gradient(options) {
@@ -42,29 +41,23 @@ var gradient = (function() {
         gradient.prototype.callback(result);
     };
     
+    var eventCallbacks = {
+        hue: inputHueChanged,
+        hueDistance: inputHueDistanceChanged,
+        saturation: inputSaturationChanged,
+        lightness: inputLightnessChanged,
+        angle: inputAngleChanged
+    };
+    
     function registerEvents(inputElements) {
         for (var i in inputElements) {
             var inputElement = document.querySelector(inputElements[i]);
             
-            switch(i) {
-                case "hue":
-                    inputElement.addEventListener(eventType, inputHueChanged, false);
-                    break;
-                case "hueDistance":
-                    inputElement.addEventListener(eventType, inputHueDistanceChanged, false);
-                    break;
-                case "saturation":
-                    inputElement.addEventListener(eventType, inputSaturationChanged, false);
-                    break;
-                case "lightness":
-                    inputElement.addEventListener(eventType, inputLightnessChanged, false);
-                    break;
-                case "angle":
-                    inputElement.addEventListener(eventType, inputAngleChanged, false);
-                    break;
-                default:
-                    throw new Error("Type not found!");
-                    break;
+            if (eventCallbacks.i !== null) {
+                inputElement.addEventListener("input", eventCallbacks[i], false);
+            }
+            else {
+                throw new Error("Type not found!");
             }
         }
     };
@@ -73,25 +66,11 @@ var gradient = (function() {
         for (var i in _options.inputs) {
             var inputElement = document.querySelector(_options.inputs[i]);
             
-            switch(i) {
-                case "hue":
-                    result.hue = inputElement.value;
-                    break;
-                case "hueDistance":
-                    result.hueDistance = inputElement.value;
-                    break;
-                case "saturation":
-                    result.saturation = inputElement.value;
-                    break;
-                case "lightness":
-                    result.lightness = inputElement.value;
-                    break;
-                case "angle":
-                    result.angle = inputElement.value;
-                    break;
-                default:
-                    throw new Error("Type not found!");
-                    break;
+            if (result.i !== null) {
+                result.i = inputElement.value;
+            }
+            else {
+                throw new Error("Type not found!");
             }
         }
         gradient.prototype.callback(result);
@@ -101,6 +80,10 @@ var gradient = (function() {
         result = newValues;
         gradient.prototype.callback(result);
     }
+
+    gradient.prototype.getString = function() {
+        return `linear-gradient(${result.angle}deg, hsl(${result.hue}, ${result.saturation}%, ${result.lightness}%), hsl(${result.hue - result.hueDistance}, ${result.saturation}%, ${result.lightness}%))`;
+    };
     
     return gradient;
 })();

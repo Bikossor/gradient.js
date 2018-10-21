@@ -1,2 +1,2 @@
 # gradient.js
-A web aplication for creating beautiful CSS gradients.
+A web application for creating beautiful CSS gradients.
