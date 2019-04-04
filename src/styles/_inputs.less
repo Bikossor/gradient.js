@@ -8,56 +8,32 @@ input[type=range]:focus {
     outline: none;
 }
 
-/* ----- Mixins ----- */
-
-.slider-track {
-    width: inherit;
-    height: 4px;
-    cursor: pointer;
-    background: #333;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    border-radius: 2px;
-}
-
-.slider-thumb {
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -8px;
-    border: 1px solid #999;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-}
-
 /* ----- Slider-Tracks ----- */
 
 input[type=range]::-webkit-slider-runnable-track {
-    .slider-track();
+    .sliderTrack();
 }
 
 input[type=range]::-moz-range-track {
-    .slider-track();
+    .sliderTrack();
 }
 
 input[type=range]::-ms-track {
-    .slider-track();
+    .sliderTrack();
 }
 
 /* ----- Slider-Thumbs ----- */
 
 input[type=range]::-webkit-slider-thumb {
-    .slider-thumb();
+    .sliderThumb();
 }
 
 input[type=range]::-moz-range-thumb {
-    .slider-thumb();
+    .sliderThumb();
 }
 
 input[type=range]::-ms-thumb {
-    .slider-thumb();
+    .sliderThumb();
 }
 
 /* ----- IE ----- */
