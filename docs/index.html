@@ -19,91 +19,79 @@
                 <span id="title">gradient.js</span>
                 <span id="subtitle">Created by <a href="https://github.com/Bikossor/" target="_blank">Bikossor</a></span>
             </section>
-            <section class="flip-container">
-                <section id="flipper">
-                    <section class="front">
-                        <table>
-                            <colgroup>
-                                <col style="width: 120px;"/>
-                                <col style="width: auto;"/>
-                                <col style="width: 60px;"/>
-                            </colgroup>
-                            <tr class="row">
-                                <td colspan="3">
-                                    <div class="preview_container">
-                                        <input type="text" id="preview_text"/>
-                                        <button onclick="copySnippet();">Copy snippet</button>
-                                    </div>                                    
-                                </td>
-                            </tr>
-                            <tr class="row">
-                                <td>
-                                    <label for="input_hue">Hue</label>
-                                </td>
-                                <td>
-                                    <input type="range" id="input_hue" min="0" max="360"/>
-                                </td>
-                                <td>
-                                    <input type="text" id="label_hue"/>
-                                </td>
-                            </tr>
-                            <tr class="row">
-                                <td>
-                                    <label for="input_hueDistance">Hue Distance</label>
-                                </td>
-                                <td>
-                                    <input type="range" id="input_hueDistance" min="0" max="360" value="180"/>
-                                </td>
-                                <td>
-                                    <input type="text" id="label_hueDistance"/>
-                                </td>
-                            </tr>
-                            <tr class="row">
-                                <td>
-                                    <label for="input_saturation">Saturation</label>
-                                </td>
-                                <td>
-                                    <input type="range" id="input_saturation" min="0" max="100" value="50"/>
-                                </td>
-                                <td>
-                                    <input type="text" id="label_saturation"/>
-                                </td>
-                            </tr>
-                            <tr class="row">
-                                <td>
-                                    <label for="input_lightness">Lightness</label>
-                                </td>
-                                <td>
-                                    <input type="range" id="input_lightness" min="0" max="100" value="50"/>
-                                </td>
-                                <td>
-                                    <input type="text" id="label_lightness"/>
-                                </td>
-                            </tr>
-                            <tr class="row">
-                                <td>
-                                    <label for="input_angle">Angle</label>
-                                </td>
-                                <td>
-                                    <input type="range" id="input_angle" min="0" max="360" value="180"/>
-                                </td>
-                                <td>
-                                    <input type="text" id="label_angle"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button onclick="flipPanel();">Flip</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </section>
-                    <section class="back">
-                        <button onclick="flipPanel();">Flip</button>
-                        <button onclick="randomize();">Randomize</button>
-                        <button onclick="download_gradient();">Download as .png (1920x1080)</button>
-                    </section>
-                </section>
+            <section class="container">
+                <table>
+                    <colgroup>
+                        <col style="width: 120px;"/>
+                        <col style="width: auto;"/>
+                        <col style="width: 60px;"/>
+                    </colgroup>
+                    <tr class="row">
+                        <td colspan="3">
+                            <div class="preview_container">
+                                <input type="text" id="preview_text"/>
+                                <button onclick="copySnippet();">Copy snippet</button>
+                            </div>                                    
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_hue">Hue</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_hue" min="0" max="360"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_hue"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_hueDistance">Hue Distance</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_hueDistance" min="0" max="360" value="180"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_hueDistance"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_saturation">Saturation</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_saturation" min="0" max="100" value="50"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_saturation"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_lightness">Lightness</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_lightness" min="0" max="100" value="50"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_lightness"/>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label for="input_angle">Angle</label>
+                        </td>
+                        <td>
+                            <input type="range" id="input_angle" min="0" max="360" value="180"/>
+                        </td>
+                        <td>
+                            <input type="text" id="label_angle"/>
+                        </td>
+                    </tr>
+                </table>
+                <button onclick="randomize();">Randomize</button>
+                <button onclick="download_gradient();">Download as .png (1920x1080)</button>
             </section>
             <footer>
                 <a href="https://github.com/Bikossor/gradient.js">gradient.js</a> - Version 1.2.0 by <a href="https://github.com/Bikossor/">Bikossor</a>
