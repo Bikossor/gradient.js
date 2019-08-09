@@ -1,50 +1,12 @@
-.flip-container {
-    perspective: 1000px;
-}
-
-.flipped {
-    transform: rotateY(180deg);
-}
-
-.flip-container,
-.front,
-.back {
+.container {
     width: 540px;
     height: 360px;
     max-width: 100%;
-}
-
-#flipper {
-    transition: 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
-    width: inherit;
-    height: inherit;
-    max-width: inherit;
-}
-
-.front,
-.back {
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: @shadow-high;
     color: #000;
     border-radius: 12px;
     overflow: hidden;
-    width: inherit;
-    height: inherit;
-    transition: padding 0.2s;
-}
-
-.front {
-    z-index: 2;
-    transform: rotateY(0deg);
-}
-
-.back {
-    transform: rotateY(180deg);
+    transition: padding 0.2s, border-radius 0.2s;
 }
